@@ -78,7 +78,7 @@ const App = () => {
   const deletePerson = (id, name) => {
     if (window.confirm(`Delete ${name}?`)) {
       axios
-        .delete(`http://localhost:3001/api/persons/${id}`)
+        .delete(`https://fullstack-palautusrepo-render-test.onrender.com/api/persons/${id}`)
         .then(() => {
           setPersons(persons.filter(person => person.id !== id))
         })
