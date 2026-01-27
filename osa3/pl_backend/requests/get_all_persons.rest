@@ -1,5 +1,5 @@
 
-DELETE http://localhost:3001/api/persons/287
+DELETE http://localhost:3001/api/persons/69777648a90e3b4693c21397
 
 ###
 
@@ -14,3 +14,25 @@ Content-Type: application/json
 ###
 
 GET http://localhost:3001/api/persons
+
+### Testaa virheellistä ID:tä (CastError)
+GET http://localhost:3001/api/persons/virheellinenid
+
+### Testaa tuntematonta polkua (unknownEndpoint)
+GET http://localhost:3001/api/vääräpolku
+
+### Testaa puuttuvaa nimeä (validation error)
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+    "number": "040-1234567"
+}
+
+### Testaa puuttuvaa numeroa
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+    "name": "Testi"
+}
