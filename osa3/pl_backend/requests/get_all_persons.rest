@@ -36,3 +36,30 @@ Content-Type: application/json
 {
     "name": "Testi"
 }
+
+### Virheellinen - ei väliviivaa
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+    "name": "Invalid 1",
+    "number": "1234556"
+}
+
+### Virheellinen - vain 1 numero alussa
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+    "name": "Invalid 2",
+    "number": "1-22334455"
+}
+
+### Kelvollinen numero (3 numeroa alussa)
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+    "name": "Valid Person 2",
+    "number": "040-22334455"
+}
