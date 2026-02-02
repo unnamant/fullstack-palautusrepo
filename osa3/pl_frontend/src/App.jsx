@@ -50,10 +50,7 @@ const Filter = ({ filter, handleFilterChange }) => {
 }
 
 const App = () => {
-  const [persons, setPersons] = useState([
-    { name: 'Arto Hellas', number: '040-1231244' },
-    { name: 'Ada Lovelace', number: '39-44-5323523' }
-  ]) 
+  const [persons, setPersons] = useState([]) 
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
   const [filter, setFilter] = useState('')
@@ -102,11 +99,18 @@ const App = () => {
             setNewNumber('')
           })
           .catch(error => {
-            showNotification(
+            console.log(error.response.data)
+            if (error.response?.status === 400) {
+              showNotification(
               `Information of ${updatedPerson.name} has already been removed from server`, 'error'
             )
             setPersons(persons.filter(person => person.id !== existingPerson.id))
-          })
+            } else {
+                showNotification(
+                  error.response.data.error, 'error'
+                )
+              }
+            })
       }
     } else {
       const personObject = {
@@ -121,6 +125,12 @@ const App = () => {
           setNewName('')
           setNewNumber('')
           showNotification(`Added ${newName}`)
+        })
+        .catch(error => {
+          console.log(error.response.data)
+          showNotification(
+            error.response?.data.error, 'error'
+          )
         })
     }
   }
