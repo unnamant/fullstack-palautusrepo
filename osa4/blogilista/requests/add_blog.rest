@@ -1,0 +1,28 @@
+### Get all blogs
+GET http://localhost:3003/api/blogs
+
+### Add a blog
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+
+{
+  "title": "React patterns",
+  "author": "Michael Chan",
+  "url": "https://reactpatterns.com/",
+  "likes": 7
+}
+
+### Add a blog
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+
+{
+  "title": "Ohjelmistotuotanto",
+  "author": "Helsingin Yliopisto",
+  "url": "https://studies.helsinki.fi/kurssit/opintojakso/otm-e0c98717-0b6e-46b4-8775-ee996712347c",
+  "likes": 10
+}
+
+
+### Delete blog
+DELETE http://localhost:3003/api/blogs/69845ffe9a265dcab13be889

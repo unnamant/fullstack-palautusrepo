@@ -1,0 +1,32 @@
+### Luo käyttäjä
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "name": "Test User",
+  "password": "secret123"
+}
+
+### Luo käyttäjä, jolla liian lyhyt nimi
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+  "username": "UM",
+  "name": "Unna",
+  "password": "secret321"
+}
+
+### Luo käyttäjä, jolla liian lyhyt salasana
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+  "username": "UnnaM",
+  "name": "Unna",
+  "password": "se"
+}
+
+### Hae kaikki käyttäjät
+GET http://localhost:3003/api/users
