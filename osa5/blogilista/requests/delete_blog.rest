@@ -1,0 +1,43 @@
+### Login first to get token
+POST http://localhost:3003/api/login
+Content-Type: application/json
+
+{
+  "username": "matti",
+  "password": "salainen123"
+}
+
+### 2. Login as testuser
+POST http://localhost:3003/api/login
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "password": "secret123"
+}
+
+### Add blog with token (matti)
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1hdHRpIiwiaWQiOiI2OTlkYWZkOTNkZmM2OTI4OWQyMjNmZGYiLCJpYXQiOjE3NzI1NTAzMDJ9.CwLxet3hKAZmo9cvY23NyrfQU89fKc0Qg-05c46LgRM
+
+{
+  "title": "React patterns",
+  "author": "Michael Chan",
+  "url": "https://reactpatterns.com/",
+  "likes": 7
+}
+
+### Get all blogs
+GET http://localhost:3003/api/blogs
+
+### 5. Delete own blog with token
+DELETE http://localhost:3003/api/blogs/69a6fa6271d149f61ee9639e
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1hdHRpIiwiaWQiOiI2OTlkYWZkOTNkZmM2OTI4OWQyMjNmZGYiLCJpYXQiOjE3NzI1NTAzMDJ9.CwLxet3hKAZmo9cvY23NyrfQU89fKc0Qg-05c46LgRM
+
+### Delete someone else's blog (should fail)
+DELETE http://localhost:3003/api/blogs/69a037a7013cbf2fdf518165
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaWQiOiI2OTlkYjAwYTNkZmM2OTI4OWQyMjNmZTIiLCJpYXQiOjE3NzI1NTAzNDR9.PVYd_ThlHQd2WK5R3PmaE2bb5aM_KPckdyqt4s4Y5g0
+
+### 7. Delete blog without token (should fail)
+DELETE http://localhost:3003/api/blogs/69a6f6a3135fb6708807a7dd
